@@ -38,19 +38,19 @@ func _ready():
 	shoot_timer.set_wait_time(SHOOTDELAY)
 	shoot_timer.connect("timeout", self, "on_shoot_timout")
 	add_child(shoot_timer)
-	
+
 	# Create timer for reload delay
 	reload_timer = Timer.new()
 	reload_timer.set_one_shot(true)
 	reload_timer.set_wait_time(RELOADDELAY)
 	reload_timer.connect("timeout", self, "on_reload_timout")
 	add_child(reload_timer)
-	
+
 	set_fixed_process(true)
 	pass
 
 func _fixed_process(delta):
-	
+
 
 	# Handle input
 	up_pressed = Input.is_action_pressed("player_forward")
@@ -59,11 +59,11 @@ func _fixed_process(delta):
 	right_pressed = Input.is_action_pressed("player_right")
 	shoot_pressed = Input.is_action_pressed("player_shoot")
 	reload_pressed = Input.is_action_pressed("player_reload")
-	
+
 	# Look at crosshair
 	var mouse_pos = camera.get_global_mouse_pos()
 	sprites.set_rot(get_pos().angle_to_point(mouse_pos))
-	
+
 	# Control
 	velocity.x = 0
 	velocity.y = 0
@@ -81,8 +81,8 @@ func _fixed_process(delta):
 		next_animation = "walk"
 		velocity.x += WALKSPEED
 	if ((right_pressed || left_pressed) && (up_pressed || down_pressed)):
-		velocity = velocity * Vector2(0.5, 0.5)
-	
+		velocity = velocity * Vector2(0.7, 0.7)
+
 	# Control reloading
 	if(reload_pressed):
 		reload()
@@ -93,9 +93,9 @@ func _fixed_process(delta):
 	# Move the player
 	var motion = velocity * delta
 	move(motion)
-	
-		
-	
+
+
+
 	if (next_animation != current_animation):
 		anim_player.play(next_animation)
 		current_animation = next_animation
@@ -111,20 +111,20 @@ func on_reload_timout():
 	bullets_left = MAXIMUMBULLETS
 	hud.update_bullets_label(bullets_left)
 	pass
-	
+
 func shoot():
 	if (bullets_left > 0):
 		# Shake the camera
 		camera.shake(0.2, 15, 8)
 		allow_shoot = false
-		
+
 		# Play animation
 		gun_anim_player.play("shoot")
-		
+
 		# Play sound
 		sample_player.play("gun_shot")
 		shoot_timer.start()
-		
+
 		bullets_left -= 1
 		hud.update_bullets_label(bullets_left)
 	else:
@@ -137,7 +137,7 @@ func reload():
 	if (allow_reload == false):
 		return
 	sample_player.play("reload")
-	
+
 	allow_reload = false
 	reload_timer.start()
 	pass
