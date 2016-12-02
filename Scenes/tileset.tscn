@@ -20,10 +20,11 @@ region_rect = Rect2( 0, 0, 200, 200 )
 
 texture = ExtResource( 1 )
 region = true
-region_rect = Rect2( 202, 0, 200, 200 )
+region_rect = Rect2( 0, 202, 200, 200 )
 
 [node name="static_body" type="StaticBody2D" parent="box"]
 
+visibility/visible = false
 input/pickable = false
 shapes/0/shape = SubResource( 1 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )

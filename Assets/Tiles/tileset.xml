@@ -19,7 +19,7 @@
 		<string name="1/name"> "box" </string>
 		<resource name="1/texture" external="0">  </resource>
 		<vector2 name="1/tex_offset"> 0, 0 </vector2>
-		<resource name="1/material"></resource>		<rect2 name="1/region"> 202, 0, 200, 200 </rect2>
+		<resource name="1/material"></resource>		<rect2 name="1/region"> 0, 202, 200, 200 </rect2>
 		<vector2 name="1/occluder_offset"> 100, 100 </vector2>
 		<resource name="1/occluder"></resource>		<vector2 name="1/navigation_offset"> 100, 100 </vector2>
 		<resource name="1/navigation"></resource>		<vector2 name="1/shape_offset"> 100, 100 </vector2>

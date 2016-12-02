@@ -2,7 +2,7 @@ extends KinematicBody2D
 
 onready var player = get_node("../../player")
 
-const MOVINGSPEED = 150
+const MOVINGSPEED = 250
 
 var velocity = Vector2(0, 0)
 

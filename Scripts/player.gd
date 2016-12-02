@@ -116,17 +116,27 @@ func shoot():
 	if (bullets_left > 0):
 		# Shake the camera
 		camera.shake(0.2, 15, 8)
+
+		# Disable immediate shooting
 		allow_shoot = false
+		shoot_timer.start()
 
 		# Play animation
 		gun_anim_player.play("shoot")
 
 		# Play sound
 		sample_player.play("gun_shot")
-		shoot_timer.start()
 
+		# Take bullet away
 		bullets_left -= 1
 		hud.update_bullets_label(bullets_left)
+
+		# Raycasting
+		var space_state = get_world_2d().get_direct_space_state()
+		var result = space_state.intersect_ray( get_global_pos(), camera.get_global_mouse_pos(), [ self ] )
+		if (not result.empty()):
+			if (result.collider.is_in_group("zombies")):
+				print("You hit a zombie!")
 	else:
 		reload()
 	pass

@@ -4,14 +4,13 @@
 [ext_resource path="res://Assets/zombie_foot.png" type="Texture" id=2]
 [ext_resource path="res://Assets/zombie.png" type="Texture" id=3]
 
-[sub_resource type="RectangleShape2D" id=3]
+[sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
 extents = Vector2( 60, 75 )
 
-[sub_resource type="Animation" id=1]
+[sub_resource type="Animation" id=2]
 
-resource/name = "base"
 length = 1.0
 loop = false
 step = 0.1
@@ -46,9 +45,8 @@ tracks/5/interp = 1
 tracks/5/imported = false
 tracks/5/keys = { "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "update":0, "values":[ 0.0 ] }
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=3]
 
-resource/name = "walk"
 length = 1.6
 loop = true
 step = 0.1
@@ -76,7 +74,7 @@ tracks/3/keys = { "times":FloatArray( 0, 0.8, 1.6 ), "transitions":FloatArray( 1
 [node name="zombie" type="KinematicBody2D"]
 
 input/pickable = false
-shapes/0/shape = SubResource( 3 )
+shapes/0/shape = SubResource( 1 )
 shapes/0/transform = Matrix32( -4.37114e-08, -1, 1, -4.37114e-08, -4.73395e-07, -10.83 )
 shapes/0/trigger = false
 collision/layers = 1
@@ -109,8 +107,8 @@ offset = Vector2( -369.367, 167.991 )
 playback/process_mode = 1
 playback/default_blend_time = 0.0
 root/root = NodePath("..")
-anims/base = SubResource( 1 )
-anims/walk = SubResource( 2 )
+anims/base = SubResource( 2 )
+anims/walk = SubResource( 3 )
 playback/active = true
 playback/speed = 1.0
 blend_times = [  ]
@@ -120,7 +118,7 @@ autoplay = "walk"
 
 transform/pos = Vector2( -4.73395e-07, -10.83 )
 transform/rot = 90.0
-shape = SubResource( 3 )
+shape = SubResource( 1 )
 trigger = false
 _update_shape_index = 0
 
