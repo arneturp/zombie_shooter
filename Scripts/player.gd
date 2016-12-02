@@ -23,7 +23,7 @@ onready var anim_player = get_node("anim_player")
 onready var gun_anim_player = get_node("gun_anim_player")
 onready var sprites = get_node("sprites")
 onready var sample_player = get_node("sample_player")
-onready var bullet_label = get_node("../hud/bullets/bullets_label")
+onready var hud = get_node("../hud")
 
 var current_animation = ""
 var next_animation = ""
@@ -109,7 +109,7 @@ func on_reload_timout():
 	allow_reload = true
 	allow_shoot = true
 	bullets_left = MAXIMUMBULLETS
-	bullet_label.set_text(String(bullets_left))
+	hud.update_bullets_label(bullets_left)
 	pass
 	
 func shoot():
@@ -126,12 +126,13 @@ func shoot():
 		shoot_timer.start()
 		
 		bullets_left -= 1
-		bullet_label.set_text(String(bullets_left))
+		hud.update_bullets_label(bullets_left)
 	else:
 		reload()
 	pass
 
 func reload():
+	hud.animate_reload()
 	allow_shoot = false
 	if (allow_reload == false):
 		return

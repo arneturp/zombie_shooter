@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=1]
+[gd_scene load_steps=15 format=1]
 
 [ext_resource path="res://Scripts/player.gd" type="Script" id=1]
 [ext_resource path="res://Assets/player_foot.png" type="Texture" id=2]
@@ -9,46 +9,14 @@
 [ext_resource path="res://Assets/Sounds/reload.smp" type="Sample" id=7]
 [ext_resource path="res://Assets/Sounds/shot.smp" type="Sample" id=8]
 
-[sub_resource type="Animation" id=1]
+[sub_resource type="CapsuleShape2D" id=1]
 
-resource/name = "base"
-length = 1.0
-loop = false
-step = 0.1
-tracks/0/type = "value"
-tracks/0/path = NodePath("sprites/body:transform/pos")
-tracks/0/interp = 1
-tracks/0/imported = false
-tracks/0/keys = { "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "update":0, "values":[ Vector2( 0, 0 ) ] }
-tracks/1/type = "value"
-tracks/1/path = NodePath("sprites/body:transform/rot")
-tracks/1/interp = 1
-tracks/1/imported = false
-tracks/1/keys = { "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "update":0, "values":[ 0.0 ] }
-tracks/2/type = "value"
-tracks/2/path = NodePath("sprites/foot_left:transform/pos")
-tracks/2/interp = 1
-tracks/2/imported = false
-tracks/2/keys = { "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "update":0, "values":[ Vector2( -36, 27 ) ] }
-tracks/3/type = "value"
-tracks/3/path = NodePath("sprites/foot_left:transform/rot")
-tracks/3/interp = 1
-tracks/3/imported = false
-tracks/3/keys = { "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "update":0, "values":[ 0.0 ] }
-tracks/4/type = "value"
-tracks/4/path = NodePath("sprites/foot_right:transform/pos")
-tracks/4/interp = 1
-tracks/4/imported = false
-tracks/4/keys = { "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "update":0, "values":[ Vector2( 36, 27 ) ] }
-tracks/5/type = "value"
-tracks/5/path = NodePath("sprites/foot_right:transform/rot")
-tracks/5/interp = 1
-tracks/5/imported = false
-tracks/5/keys = { "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "update":0, "values":[ 0.0 ] }
+custom_solver_bias = 0.0
+radius = 50.0
+height = 55.0
 
 [sub_resource type="Animation" id=2]
 
-resource/name = "idle"
 length = 1.0
 loop = false
 step = 0.1
@@ -85,6 +53,42 @@ tracks/5/keys = { "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "updat
 
 [sub_resource type="Animation" id=3]
 
+length = 1.0
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("sprites/body:transform/pos")
+tracks/0/interp = 1
+tracks/0/imported = false
+tracks/0/keys = { "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "update":0, "values":[ Vector2( 0, 0 ) ] }
+tracks/1/type = "value"
+tracks/1/path = NodePath("sprites/body:transform/rot")
+tracks/1/interp = 1
+tracks/1/imported = false
+tracks/1/keys = { "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "update":0, "values":[ 0.0 ] }
+tracks/2/type = "value"
+tracks/2/path = NodePath("sprites/foot_left:transform/pos")
+tracks/2/interp = 1
+tracks/2/imported = false
+tracks/2/keys = { "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "update":0, "values":[ Vector2( -36, 27 ) ] }
+tracks/3/type = "value"
+tracks/3/path = NodePath("sprites/foot_left:transform/rot")
+tracks/3/interp = 1
+tracks/3/imported = false
+tracks/3/keys = { "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "update":0, "values":[ 0.0 ] }
+tracks/4/type = "value"
+tracks/4/path = NodePath("sprites/foot_right:transform/pos")
+tracks/4/interp = 1
+tracks/4/imported = false
+tracks/4/keys = { "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "update":0, "values":[ Vector2( 36, 27 ) ] }
+tracks/5/type = "value"
+tracks/5/path = NodePath("sprites/foot_right:transform/rot")
+tracks/5/interp = 1
+tracks/5/imported = false
+tracks/5/keys = { "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "update":0, "values":[ 0.0 ] }
+
+[sub_resource type="Animation" id=4]
+
 length = 0.4
 loop = true
 step = 0.1
@@ -119,15 +123,14 @@ tracks/5/interp = 1
 tracks/5/imported = false
 tracks/5/keys = { "times":FloatArray( 0, 0.2, 0.4 ), "transitions":FloatArray( 1, 1, 1 ), "update":0, "values":[ 0.0, 0.0, 0.0 ] }
 
-[sub_resource type="SampleLibrary" id=4]
+[sub_resource type="SampleLibrary" id=5]
 
 samples/gun_shot = { "db":5.0, "pitch":1.0, "sample":ExtResource( 6 ) }
 samples/reload = { "db":15.0, "pitch":1.0, "sample":ExtResource( 7 ) }
 samples/shot = { "db":0.0, "pitch":1.0, "sample":ExtResource( 8 ) }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=6]
 
-resource/name = "shoot"
 length = 1.0
 loop = false
 step = 0.03
@@ -140,6 +143,9 @@ tracks/0/keys = { "times":FloatArray( 0, 0.03, 0.06 ), "transitions":FloatArray(
 [node name="player" type="KinematicBody2D"]
 
 input/pickable = false
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( -4.37114e-08, -1, 1, -4.37114e-08, 3.93403e-07, 9 )
+shapes/0/trigger = false
 collision/layers = 1
 collision/mask = 1
 collision/margin = 0.08
@@ -175,9 +181,9 @@ offset = Vector2( 0.320648, -9.12433 )
 playback/process_mode = 1
 playback/default_blend_time = 0.0
 root/root = NodePath("..")
-anims/base = SubResource( 1 )
-anims/idle = SubResource( 2 )
-anims/walk = SubResource( 3 )
+anims/base = SubResource( 2 )
+anims/idle = SubResource( 3 )
+anims/walk = SubResource( 4 )
 playback/active = true
 playback/speed = 1.0
 blend_times = [  ]
@@ -206,7 +212,7 @@ script/script = ExtResource( 5 )
 [node name="sample_player" type="SamplePlayer" parent="."]
 
 config/polyphony = 1
-config/samples = SubResource( 4 )
+config/samples = SubResource( 5 )
 default/volume_db = 0.0
 default/pitch_scale = 1.0
 default/pan = 0.0
@@ -225,10 +231,18 @@ default/chorus_send = 0.0
 playback/process_mode = 1
 playback/default_blend_time = 0.0
 root/root = NodePath("..")
-anims/shoot = SubResource( 5 )
+anims/shoot = SubResource( 6 )
 playback/active = true
 playback/speed = 1.0
 blend_times = [  ]
 autoplay = ""
+
+[node name="collision_shape" type="CollisionShape2D" parent="."]
+
+transform/pos = Vector2( 3.93403e-07, 9 )
+transform/rot = 90.0
+shape = SubResource( 1 )
+trigger = false
+_update_shape_index = 0
 
 
