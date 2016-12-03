@@ -136,7 +136,7 @@ func shoot():
 		var result = space_state.intersect_ray( get_global_pos(), camera.get_global_mouse_pos(), [ self ] )
 		if (not result.empty()):
 			if (result.collider.is_in_group("zombies")):
-				print("You hit a zombie!")
+				result.collider.shot()
 	else:
 		reload()
 	pass

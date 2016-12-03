@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=1]
+[gd_scene load_steps=19 format=1]
 
 [ext_resource path="res://Scripts/player.gd" type="Script" id=1]
 [ext_resource path="res://Assets/player_foot.png" type="Texture" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://Assets/Sounds/gun_shot.smp" type="Sample" id=6]
 [ext_resource path="res://Assets/Sounds/reload.smp" type="Sample" id=7]
 [ext_resource path="res://Assets/Sounds/shot.smp" type="Sample" id=8]
+[ext_resource path="res://Assets/Sounds/zombie_shot_impact.smp" type="Sample" id=9]
 
 [sub_resource type="CapsuleShape2D" id=1]
 
@@ -143,6 +144,7 @@ tracks/5/keys = { "times":FloatArray( 0, 0.2, 0.4 ), "transitions":FloatArray( 1
 samples/gun_shot = { "db":5.0, "pitch":1.0, "sample":ExtResource( 6 ) }
 samples/reload = { "db":15.0, "pitch":1.0, "sample":ExtResource( 7 ) }
 samples/shot = { "db":0.0, "pitch":1.0, "sample":ExtResource( 8 ) }
+samples/zombie_shot_impact = { "db":0.0, "pitch":1.0, "sample":ExtResource( 9 ) }
 
 [sub_resource type="Animation" id=9]
 
